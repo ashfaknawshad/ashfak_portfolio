@@ -1,0 +1,106 @@
+:root {
+    /* Default Theme: Cyberpunk Night */
+    --bg-color: #0d0221;
+    --text-color: #a6b2ec;
+    --name-color: #f0f8ff;
+    --sparkle-color: #ff00ff; /* Magenta */
+    --icon-color: #a6b2ec;
+    --icon-hover-color: #ff00ff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 0.5s, color 0.5s;
+    cursor: none;
+    overflow: hidden; /* Prevent scrollbars from sparkles */
+}
+
+.container {
+    text-align: center;
+}
+
+.name {
+    color: var(--name-color);
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 5px var(--sparkle-color), 0 0 10px var(--sparkle-color);
+    transition: text-shadow 0.5s;
+}
+
+.roles {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-top: 1rem;
+    height: 2rem; /* Give a fixed height to prevent layout shift */
+}
+
+.cursor {
+    display: inline-block;
+    background-color: var(--sparkle-color);
+    width: 3px;
+    animation: blink 1s infinite;
+    box-shadow: 0 0 8px var(--sparkle-color);
+    transition: background-color 0.5s, box-shadow 0.5s;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Sparkle Styles */
+.sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: var(--sparkle-color);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    animation: sparkle-animation 0.6s ease-out;
+    box-shadow: 0 0 10px var(--sparkle-color);
+}
+
+@keyframes sparkle-animation {
+    0% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Social Links Styles */
+.social-links {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.social-links a {
+    color: var(--icon-color);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--icon-hover-color);
+    transform: translateY(-5px) scale(1.1); /* Hover effect */
+}
+
+.social-links svg {
+    stroke: currentColor; /* Make SVG color inheritable */
+    width: 28px;
+    height: 28px;
+}
